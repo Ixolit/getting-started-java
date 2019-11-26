@@ -18,7 +18,7 @@ buildscript {    // Configuration for building
     mavenCentral()
   }
   dependencies {
-    classpath 'com.google.cloud.tools:appengine-gradle-plugin:1.+'    // Latest 1.x.x release
+    classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.0.+'    // Latest 2.x.x release
   }
 }
 
@@ -35,7 +35,7 @@ apply plugin: 'war'                               // standard Web Archive plugin
 apply plugin: 'com.google.cloud.tools.appengine'  // App Engine tasks
 
 dependencies {
-  compile 'com.google.appengine:appengine-api-1.0-sdk:+'  // Latest App Engine Api's
+  compile 'com.google.appengine:appengine-api-1.0-sdk:1.9.77'  // Latest App Engine Api's
   providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
   compile 'jstl:jstl:1.2'
@@ -58,8 +58,12 @@ appengineStage.dependsOn test
 
 // [START model]
 appengine {  // App Engine tasks configuration
+  tools {
+    cloudSdkVersion = "271.0.0"
+  }
   deploy {   // deploy configuration
-
+    projectId = "halogen-dev"
+    version = "gsdk-271-0-0-asdk-1-9-77"
   }
 }
 
